@@ -72,6 +72,11 @@ const RequirementCard = ({ requirement }: RequirementCardProps) => {
               </Badge>
             </div>
           </div>
+          <Badge
+            className={`bg-white border border-blue-200 text-black ${statusBadges[0].className} text-sm`}
+          >
+            <span>{statusBadges[0].label}</span>
+          </Badge>
         </div>
 
         {/* Special Instruction */}
@@ -108,7 +113,8 @@ const RequirementCard = ({ requirement }: RequirementCardProps) => {
 
         {/* All Badges */}
         <div className="flex items-center gap-1.5 flex-wrap">
-          {statusBadges.map((badge, index) => {
+          {/* The first status is the primary status, which is already shown above. The second status is time related information, which is optional. */}
+          {statusBadges.slice(1).map((badge, index) => {
             const Icon = badge.icon;
             return (
               <InfoBadge
@@ -134,9 +140,9 @@ const RequirementCard = ({ requirement }: RequirementCardProps) => {
 
           <InfoBadge
             icon={Calendar}
-            name="Due"
+            name="Due At"
             value={formatDate(requirement.submissionDeadline, {})}
-            className="bg-red-100 text-red-700 border-0 text-xs px-2 py-1 font-medium"
+            className="bg-red-100 text-red-700 border-0 px-2 py-1 font-medium"
           />
 
           {/* Additional timing badges for approved submissions */}
@@ -145,7 +151,7 @@ const RequirementCard = ({ requirement }: RequirementCardProps) => {
               icon={Calendar}
               name="Submitted"
               value={formatDate(requirement.submittedAt, {})}
-              className="bg-blue-100 text-blue-700 border-0 text-xs px-2 py-1 font-medium"
+              className="bg-blue-100 text-blue-700 border-0 px-2 py-1 font-medium"
             />
           )}
           {showApprovedDetails && requirement.expiredAt && (
@@ -153,7 +159,7 @@ const RequirementCard = ({ requirement }: RequirementCardProps) => {
               icon={Calendar}
               name="Expires"
               value={formatDate(requirement.expiredAt, {})}
-              className="bg-purple-100 text-purple-700 border-0 text-xs px-2 py-1 font-medium"
+              className="bg-purple-100 text-purple-700 border-0 px-2 py-1 font-medium"
             />
           )}
         </div>

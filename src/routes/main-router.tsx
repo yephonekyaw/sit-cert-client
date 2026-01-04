@@ -2,6 +2,7 @@ import App from "@/App";
 import studentRouter from "./student-router";
 import staffRouter from "./staff-router";
 import NotFoundPage from "@/pages/not-found-page";
+import GlobalRedirect from "@/pages/global-redirect";
 
 const mainRouter = [
   {
@@ -10,7 +11,7 @@ const mainRouter = [
     children: [
       {
         index: true,
-        element: <NotFoundPage />,
+        element: <GlobalRedirect />, // put this element in the route-protect component to prevent logged-out users
       },
       {
         path: "/student",

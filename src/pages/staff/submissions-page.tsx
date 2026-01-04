@@ -14,8 +14,11 @@ import { toast } from "sonner";
 
 const SubmissionsPage = () => {
   const [searchParams] = useSearchParams();
-  const scheduleId = searchParams.get("scheduleId");
-  const { currentTab, setSubmissionRelatedDetail } = useSubmissionStore();
+  const { currentTab, setSubmissionRelatedDetail, submissionRelatedDetail } =
+    useSubmissionStore();
+  const scheduleId =
+    searchParams.get("scheduleId") ||
+    (submissionRelatedDetail && submissionRelatedDetail.scheduleId);
   const {
     data: submissions,
     isLoading,

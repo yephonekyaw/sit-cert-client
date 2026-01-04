@@ -1,12 +1,6 @@
 import { CardContent } from "@/components/ui/card";
 import type { GetCertificatesItem } from "@/services/staff/certificates/types";
-import {
-  Hash,
-  CheckSquare,
-  Upload,
-  ShieldCheck,
-  FileBadge,
-} from "lucide-react";
+import { CheckSquare, Upload, ShieldCheck, FileBadge } from "lucide-react";
 import CardBase from "../dashboard/card-base";
 import CardHeaderSection from "../dashboard/card-header-section";
 import ExpandableCardContent from "../dashboard/expandable-card-content";
@@ -61,12 +55,12 @@ const CertificateCard = ({ certificate }: CertificateCardProps) => {
         />
 
         <CardInfoSection>
-          <CardInfoItem
+          {/* <CardInfoItem
             icon={Hash}
             label="Certificate ID"
             value={`${certificate.id.slice(0, 8)}...`}
             // className="bg-blue-100 text-blue-700 border-blue-200"
-          />
+          /> */}
           <CardInfoItem
             icon={CheckSquare}
             label="Active Req"

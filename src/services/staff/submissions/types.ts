@@ -60,6 +60,9 @@ export type SubmissionRelatedData = {
   certCode: string;
   certName: string;
   certDescription: string;
+
+  // Academic year data
+  yearCode: number;
 };
 
 // Get List of Submissions Type

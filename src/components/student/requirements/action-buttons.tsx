@@ -1,4 +1,4 @@
-import { View, Download, Edit } from "lucide-react";
+import { Eye, Download, Edit } from "lucide-react";
 import { generateFilePresignedUrl } from "@/services/minio/apis";
 import { toast } from "sonner";
 
@@ -8,8 +8,15 @@ interface ActionButtonsProps {
   onEdit: () => void;
 }
 
-const ActionButtons = ({ fileObjectName, filename, onEdit }: ActionButtonsProps) => {
-  const handleClickView = async (objectName: string, expiresInHours?: number) => {
+const ActionButtons = ({
+  fileObjectName,
+  filename,
+  onEdit,
+}: ActionButtonsProps) => {
+  const handleClickView = async (
+    objectName: string,
+    expiresInHours?: number
+  ) => {
     try {
       const response = await generateFilePresignedUrl({
         objectName,
@@ -21,8 +28,8 @@ const ActionButtons = ({ fileObjectName, filename, onEdit }: ActionButtonsProps)
         toast.error(response.message);
       }
     } catch (error) {
-      console.error('View failed:', error);
-      toast.error('Failed to view file');
+      console.error("View failed:", error);
+      toast.error("Failed to view file");
     }
   };
 
@@ -58,8 +65,8 @@ const ActionButtons = ({ fileObjectName, filename, onEdit }: ActionButtonsProps)
         toast.error(response.message);
       }
     } catch (error) {
-      console.error('Download failed:', error);
-      toast.error('Failed to download file');
+      console.error("Download failed:", error);
+      toast.error("Failed to download file");
     }
   };
 
@@ -70,7 +77,7 @@ const ActionButtons = ({ fileObjectName, filename, onEdit }: ActionButtonsProps)
         title="View"
         onClick={() => handleClickView(fileObjectName)}
       >
-        <View className="h-4 w-4 text-blue-600" />
+        <Eye className="h-4 w-4 text-blue-600" />
       </div>
       <div
         className="p-2 bg-purple-100 hover:bg-purple-200 rounded-lg transition-colors cursor-pointer"

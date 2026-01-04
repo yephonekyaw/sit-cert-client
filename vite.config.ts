@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: "/certificate/",
+  base: "/certificate",
   build: {
     outDir: "dist",
     rollupOptions: {
@@ -136,11 +136,11 @@ export default defineConfig(({ mode }) => ({
   ...(mode === "development"
     ? {
         server: {
-          host: "sitportal.test",
-          allowedHosts: [".sitportal.test"],
+          host: "localhost",
+          allowedHosts: ["localhost"],
           port: 5173,
           strictPort: true,
-          origin: "http://sitportal.test",
+          origin: "http://localhost",
         },
       }
     : {}),

@@ -48,24 +48,22 @@ const SheetOverview = ({ requirement }: SheetOverviewProps) => {
   return (
     <div className="space-y-3">
       {/* Status Banner */}
-      {isSubmitted && (
-        <div className={`p-3 rounded-lg border ${statusBadge.className}`}>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <StatusIcon className="h-4 w-4" />
-              <p className="font-medium text-base">{statusBadge.label}</p>
-            </div>
-            {requirement.submittedAt && (
-              <div className="text-right">
-                <p className="text-sm opacity-70">Last Updated</p>
-                <p className="font-medium text-sm">
-                  {formatDate(requirement.submittedAt, {})}
-                </p>
-              </div>
-            )}
+      <div className={`p-3 rounded-lg border ${statusBadge.className}`}>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-2">
+            <StatusIcon className="h-4 w-4" />
+            <p className="font-medium text-base">{statusBadge.label}</p>
           </div>
+          {requirement.submittedAt && (
+            <div className="text-right">
+              <p className="text-sm opacity-70">Last Updated</p>
+              <p className="font-medium text-sm">
+                {formatDate(requirement.submittedAt, {})}
+              </p>
+            </div>
+          )}
         </div>
-      )}
+      </div>
 
       {/* Requirement Info */}
       <Card className="shadow-none border border-gray-200">

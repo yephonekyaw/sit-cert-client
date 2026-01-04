@@ -1,4 +1,4 @@
-import { View, Download, TicketCheck } from "lucide-react";
+import { Eye, Download, TicketCheck } from "lucide-react";
 import { generateFilePresignedUrl } from "@/services/minio/apis";
 import { toast } from "sonner";
 
@@ -79,7 +79,7 @@ const StaffActionButtons = ({
         title="View"
         onClick={() => handleClickView(fileObjectName)}
       >
-        <View className="h-4 w-4 text-blue-600" />
+        <Eye className="h-4 w-4 text-blue-600" />
       </div>
       <div
         className="p-2 bg-purple-100 hover:bg-purple-200 rounded-lg transition-colors cursor-pointer"

@@ -5,7 +5,7 @@ import { CardContent } from "@/components/ui/card";
 import CardInfoSection from "../dashboard/card-info-section";
 import CardInfoItem from "../dashboard/card-info-item";
 import CardFooter from "../dashboard/card-footer";
-import { Hash, Clock, GraduationCap, CalendarDays } from "lucide-react";
+import { Clock, GraduationCap, CalendarDays } from "lucide-react";
 import { isDeadlinePassed } from "@/utils/staff/dashboard.utils";
 import {
   formatDate,
@@ -39,14 +39,14 @@ const ScheduleCard = ({ schedule }: { schedule: GetSchedulesItem }) => {
       />
       <CardContent className="pt-0 space-y-6">
         <CardInfoSection>
-          <CardInfoItem
+          {/* <CardInfoItem
             icon={Hash}
             label="Schedule ID"
             value={`${schedule.id.slice(0, 8)}...`}
-          />
+          /> */}
           <CardInfoItem
             icon={Clock}
-            label="Submission Deadline"
+            label="Due At"
             value={formatDate(schedule.submissionDeadline, {})}
           />
           <CardInfoItem

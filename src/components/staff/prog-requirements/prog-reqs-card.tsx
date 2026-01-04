@@ -6,7 +6,6 @@ import {
 } from "@/utils/staff/dashboard.utils";
 import {
   AlertCircle,
-  Hash,
   Clock,
   GraduationCap,
   Target,
@@ -71,14 +70,14 @@ const ProgramRequirementCard = ({
         )}
 
         <CardInfoSection>
-          <CardInfoItem
+          {/* <CardInfoItem
             icon={Hash}
             label="Requirement ID"
             value={`${requirement.id.slice(0, 8)}...`}
-          />
+          /> */}
           <CardInfoItem
             icon={Clock}
-            label="Deadline"
+            label="Due At"
             value={getDeadlineString(deadlineMonth, deadlineDay)}
           />
           <CardInfoItem

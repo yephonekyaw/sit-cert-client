@@ -1,5 +1,5 @@
 import { CardContent } from "@/components/ui/card";
-import { Clock, Hash, FileCheck, Archive } from "lucide-react";
+import { Clock, FileCheck, Archive } from "lucide-react";
 import type { GetProgramsItem } from "@/services/staff/programs/types";
 import CardBase from "../dashboard/card-base";
 import CardHeaderSection from "../dashboard/card-header-section";
@@ -39,12 +39,12 @@ export default function ProgramCard({ program }: { program: GetProgramsItem }) {
         </p>
 
         <CardInfoSection>
-          <CardInfoItem
+          {/* <CardInfoItem
             icon={Hash}
             label="ID"
             value={`${program.id.slice(0, 8)}...`}
             // className="bg-blue-100 text-blue-700 border-blue-200"
-          />
+          /> */}
           <CardInfoItem
             icon={Clock}
             label="Duration"

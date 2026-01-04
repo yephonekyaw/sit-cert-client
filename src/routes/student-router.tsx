@@ -1,7 +1,7 @@
 import StudentApp from "@/apps/student-app";
 import RouteProtect from "@/middlewares/route-protect";
-import NotFoundPage from "@/pages/not-found-page";
 import RequirementPage from "@/pages/student/requirements-page";
+import StudentRedirectPage from "@/pages/student/student-redirect-page";
 
 const studentRouter = [
   {
@@ -14,7 +14,7 @@ const studentRouter = [
     children: [
       {
         index: true,
-        element: <NotFoundPage />,
+        element: <StudentRedirectPage />,
       },
       {
         path: "requirements",

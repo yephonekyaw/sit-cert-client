@@ -3,6 +3,7 @@ import {
   UserCheck,
   BarChart3,
   Calendar,
+  CalendarDays,
   FileText,
   GraduationCap,
   Award,
@@ -82,13 +83,18 @@ const PageHeader = () => {
             value={submissionRelatedDetail.certCode}
           />
           <InfoBadge
+            icon={CalendarDays}
+            name="Academic Year"
+            value={submissionRelatedDetail.yearCode.toString()}
+          />
+          <InfoBadge
             icon={Calendar}
             name="Target Year"
             value={submissionRelatedDetail.targetYear.toString()}
           />
           <InfoBadge
             icon={Clock}
-            name="Deadline"
+            name="Due At"
             value={formatDate(submissionRelatedDetail.submissionDeadline, {})}
           />
         </div>

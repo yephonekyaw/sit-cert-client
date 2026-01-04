@@ -11,7 +11,7 @@ interface InfoBadgeProps {
 const InfoBadge = ({ icon: Icon, name, value, className }: InfoBadgeProps) => {
   return (
     <Badge
-      className={`bg-white border border-blue-200 text-black ${className}`}
+      className={`bg-white border border-blue-200 text-black ${className} text-sm`}
     >
       <Icon className="h-4 w-4" />
       &bull;

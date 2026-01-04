@@ -1,13 +1,13 @@
-name: "sit-portal-client"
+name: "sit-cert-client"
 
 services:
   client:
     build:
       context: .
       dockerfile: docker/Dockerfile.prod
-    container_name: sit-portal-client
+    container_name: sit-cert-client
     ports:
-      - "80:80"
+      - "3001:3001"
     env_file:
       - .env
     restart: unless-stopped

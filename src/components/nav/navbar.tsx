@@ -27,12 +27,16 @@ export function Navbar({ className }: { className?: string }) {
     >
       <div className="container flex h-[4rem] items-center w-full max-w-screen lg:max-w-7xl">
         <div className="hidden md:flex">
-          <Link to="/" className="flex items-center space-x-2">
+          <Link
+            to={import.meta.env.VITE_BASE_LANDING_URL}
+            className="flex items-center space-x-2"
+            replace
+          >
             <div className="p-1 bg-blue-100 rounded-lg">
-              <img src="/logos/temp_logo.svg" className="w-8 h-8" />
+              <img src="/certificate/logos/temp_logo.svg" className="w-8 h-8" />
             </div>
             <span className="font-bold text-xl text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800">
-              SIT PORTAL
+              SIT CERT
             </span>
           </Link>
         </div>
@@ -55,10 +59,10 @@ export function Navbar({ className }: { className?: string }) {
         <div className="flex md:hidden flex-1 items-center justify-center">
           <Link to="/" className="flex items-center space-x-2">
             <div className="p-1 bg-blue-100 rounded-lg">
-              <img src="/logos/temp_logo.svg" className="w-8 h-8" />
+              <img src="/certificate/logos/temp_logo.svg" className="w-8 h-8" />
             </div>
             <span className="font-bold text-xl text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800">
-              SIT PORTAL
+              SIT CERT
             </span>
           </Link>
         </div>
