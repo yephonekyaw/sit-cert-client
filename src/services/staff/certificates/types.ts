@@ -3,7 +3,6 @@ export interface GetCertificatesItem {
   certCode: string;
   certName: string;
   description: string;
-  verificationTemplate: string;
   hasExpiration: boolean;
   isActive: boolean;
   createdAt: string; // ISO timestamp

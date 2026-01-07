@@ -1,18 +1,9 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
 import { formatDate } from "@/utils/common.utils";
-import { getConfidenceColor } from "@/utils/staff/submission.utils";
-import {
-  FileText,
-  Bot,
-  Calendar,
-  ChevronDown,
-  ChevronUp,
-  Info,
-} from "lucide-react";
+import { FileText, Calendar, ChevronDown, ChevronUp, Info } from "lucide-react";
 import { memo, useState } from "react";
 import type { RequirementCardProps } from "@/types/student/requirement.types";
 import { useRequirementStore } from "@/stores/student/requirement.stores";
@@ -22,7 +13,7 @@ import {
   shouldShowApprovedDetails,
 } from "@/utils/student/requirement.utils";
 import { DEFAULT_TEXT_TRUNCATE_LENGTH } from "@/constants/student/requirement.constants";
-import InfoBadge from "@/components/staff/submissions/info-badge";
+import CardInfoItem from "@/components/staff/dashboard/card-info-item";
 
 const RequirementCard = ({ requirement }: RequirementCardProps) => {
   const { openDetailSheet } = useRequirementStore();
@@ -31,7 +22,6 @@ const RequirementCard = ({ requirement }: RequirementCardProps) => {
   const statusBadges = getRequirementStatusBadges(requirement);
   const showApprovedDetails = shouldShowApprovedDetails(requirement);
 
-  const confidenceScore = requirement.agentConfidenceScore ?? 0;
   const instructionsText = requirement.specialInstruction || "";
   const shouldTruncate = instructionsText.length > DEFAULT_TEXT_TRUNCATE_LENGTH;
 
@@ -117,73 +107,47 @@ const RequirementCard = ({ requirement }: RequirementCardProps) => {
           {statusBadges.slice(1).map((badge, index) => {
             const Icon = badge.icon;
             return (
-              <InfoBadge
+              <CardInfoItem
                 key={index}
                 icon={Icon}
-                name="Status"
+                label="Status"
                 value={badge.label}
-                className={badge.className}
+                className="bg-blue-100 text-blue-700 border-0 px-2 py-1"
               />
             );
           })}
 
-          <InfoBadge
+          <CardInfoItem
             icon={Info}
-            name="Requirement"
+            label="Requirement"
             value={requirement.isMandatory ? "Required" : "Optional"}
-            className={`${
-              requirement.isMandatory
-                ? "bg-indigo-500 text-white"
-                : "bg-slate-500 text-white"
-            }`}
+            className="bg-blue-100 text-blue-700 border-0 px-2 py-1"
           />
 
-          <InfoBadge
+          <CardInfoItem
             icon={Calendar}
-            name="Due At"
+            label="Due At"
             value={formatDate(requirement.submissionDeadline, {})}
-            className="bg-red-100 text-red-700 border-0 px-2 py-1 font-medium"
+            className="bg-red-100 text-red-700 border-0 px-2 py-1"
           />
 
           {/* Additional timing badges for approved submissions */}
           {showApprovedDetails && requirement.submittedAt && (
-            <InfoBadge
+            <CardInfoItem
               icon={Calendar}
-              name="Submitted"
+              label="Submitted"
               value={formatDate(requirement.submittedAt, {})}
-              className="bg-blue-100 text-blue-700 border-0 px-2 py-1 font-medium"
+              className="bg-blue-100 text-blue-700 border-0 px-2 py-1"
             />
           )}
           {showApprovedDetails && requirement.expiredAt && (
-            <InfoBadge
+            <CardInfoItem
               icon={Calendar}
-              name="Expires"
+              label="Expires"
               value={formatDate(requirement.expiredAt, {})}
-              className="bg-purple-100 text-purple-700 border-0 px-2 py-1 font-medium"
+              className="bg-blue-100 text-blue-700 border-0 px-2 py-1"
             />
           )}
-        </div>
-
-        {/* AI Confidence Score - Always show */}
-        <div className="space-y-2 pt-2 border-t border-gray-200">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-1.5">
-              <Bot className="h-4 w-4 text-purple-500" />
-              <span className="text-xs text-gray-700 font-medium">
-                AI Confidence
-              </span>
-            </div>
-            <span
-              className={`text-xs font-medium ${
-                confidenceScore > 0
-                  ? getConfidenceColor(confidenceScore)
-                  : "text-gray-400"
-              }`}
-            >
-              {Math.round(confidenceScore * 100)}%
-            </span>
-          </div>
-          <Progress value={confidenceScore * 100} className="h-1 bg-gray-200" />
         </div>
       </CardContent>
     </Card>

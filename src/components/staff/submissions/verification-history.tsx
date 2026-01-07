@@ -85,13 +85,6 @@ const HistoryItem = ({
                 {newStatusConfig.label}
               </Badge>
             </div>
-
-            {history.reasons && (
-              <div className="bg-slate-50 p-3 rounded-lg border mt-3">
-                <p className="text-sm font-medium mb-1">Reason:</p>
-                <p className="text-sm text-slate-600">{history.reasons}</p>
-              </div>
-            )}
           </div>
         </div>
       </div>

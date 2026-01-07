@@ -5,6 +5,8 @@ import type { StudentRequirementWithSubmission } from "./types";
 import { useRequirementStore } from "@/stores/student/requirement.stores";
 import { toast } from "sonner";
 
+// useMutation<TData, TError, TVariables, TContext>
+
 const usePostSubmitRequirement = () => {
   const queryClient = useQueryClient();
   const { setSelectedRequirement } = useRequirementStore();

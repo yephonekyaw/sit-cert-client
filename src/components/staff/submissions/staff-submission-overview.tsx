@@ -1,11 +1,9 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import { formatFileSize, getInitialsOneInput } from "@/utils/common.utils";
 import { formatDate } from "@/utils/common.utils";
 import {
-  getConfidenceColor,
   getEnrollmentStatusBadge,
   getSubmissionStatusBadge,
   isSubmissionSubmitted,
@@ -13,7 +11,6 @@ import {
 import { useSubmissionStore } from "@/stores/staff/submission.stores";
 import {
   FileIcon,
-  Bot,
   AlertCircle,
   Mail,
   CalendarClock,
@@ -34,7 +31,6 @@ const StaffSubmissionOverview = ({
 }: StaffSubmissionOverviewProps) => {
   const { submissionRelatedDetail, selectedSubmission } = useSubmissionStore();
   const navigate = useNavigate();
-  const confidenceScore = submission.agentConfidenceScore ?? 0;
   const isSubmitted = isSubmissionSubmitted(submission);
   const statusBadge = getSubmissionStatusBadge(
     selectedSubmission?.submissionStatus ?? null
@@ -176,31 +172,6 @@ const StaffSubmissionOverview = ({
                 </div>
               </div>
             )}
-
-            {/* AI Confidence Score */}
-            <div className="space-y-2 pt-2 border-t border-gray-200">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-1.5">
-                  <Bot className="h-4 w-4 text-purple-500" />
-                  <span className="text-sm text-gray-700 font-medium">
-                    AI Confidence
-                  </span>
-                </div>
-                <span
-                  className={`text-sm font-medium ${
-                    confidenceScore > 0
-                      ? getConfidenceColor(confidenceScore)
-                      : "text-gray-400"
-                  }`}
-                >
-                  {Math.round(confidenceScore * 100)}%
-                </span>
-              </div>
-              <Progress
-                value={confidenceScore * 100}
-                className="h-1 bg-gray-200"
-              />
-            </div>
 
             {/* Timeline */}
             <div className="flex items-center justify-center text-center pt-2 border-t border-gray-200 gap-4">

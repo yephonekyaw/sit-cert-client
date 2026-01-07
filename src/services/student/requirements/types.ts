@@ -34,7 +34,6 @@ interface StudentRequirementWithSubmission {
   fileSize?: number;
   mimeType?: string;
   submissionStatus?: string;
-  agentConfidenceScore?: number;
   submissionTiming?: string;
   submittedAt?: string;
   expiredAt?: string;
@@ -62,10 +61,6 @@ interface VerificationHistoryResponse {
   newStatus: SubmissionStatus;
   /** Verification comments */
   comments?: string;
-  /** Verification reasons */
-  reasons?: string;
-  /** Agent analysis result data */
-  agentAnalysisResult?: Record<string, unknown>;
   /** Creation timestamp */
   createdAt: string;
   /** Last update timestamp */

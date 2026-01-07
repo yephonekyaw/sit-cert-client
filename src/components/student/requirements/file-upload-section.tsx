@@ -214,7 +214,7 @@ const FileUploadSection = ({
                 </label>
 
                 <p className="text-sm text-gray-500 mt-3">
-                  Supported formats: PDF, JPG, JPEG, PNG, WebP (Max 10MB)
+                  Supported formats: PDF (Max 10MB)
                 </p>
 
                 {/* Selected File Preview */}

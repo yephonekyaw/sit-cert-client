@@ -9,13 +9,10 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-// import { usePostLogout } from "@/services/auth/mutations";
-// import { toast } from "sonner";
 import Cookies from "js-cookie";
 
 export function LogoutButton() {
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);
-  // const { mutate: logout, isPending: isSigningOut } = usePostLogout();
 
   const handleLogoutClick = () => {
     setIsDialogOpen(true);
@@ -23,10 +20,8 @@ export function LogoutButton() {
 
   const handleConfirmLogout = () => {
     setIsDialogOpen(false);
-    // toast.loading("Logging out...");
     Cookies.remove("jwt_token"); // Remove JWT token cookie
     window.location.href = import.meta.env.VITE_BASE_LANDING_URL;
-    // logout();
   };
 
   const handleCancelLogout = () => {
@@ -40,7 +35,6 @@ export function LogoutButton() {
         size="icon"
         className="rounded-full bg-rose-200/40 hover:bg-rose-200/60 focus:bg-rose-200/60"
         onClick={handleLogoutClick}
-        // disabled={isSigningOut}
         aria-label="Logout"
       >
         <LogOut className="h-10 w-10 text-rose-600" />
@@ -68,18 +62,15 @@ export function LogoutButton() {
             <Button
               variant="outline"
               onClick={handleCancelLogout}
-              // disabled={isSigningOut}
               className="border-gray-300 hover:bg-gray-50"
             >
               Cancel
             </Button>
             <Button
               onClick={handleConfirmLogout}
-              // disabled={isSigningOut}
               className="bg-rose-600 hover:bg-rose-700 text-white"
             >
               <LogOut className="w-4 h-4" />
-              {/* {isSigningOut ? "Signing out..." : "Logout"} */}
               Logout
             </Button>
           </DialogFooter>

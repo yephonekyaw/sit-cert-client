@@ -1,6 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
   Form,
   FormControl,
@@ -12,14 +11,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
-import {
-  ArrowLeft,
-  ShieldCheck,
-  Save,
-  Info,
-  Settings,
-  FileText,
-} from "lucide-react";
+import { ArrowLeft, Save, Info, Settings } from "lucide-react";
 import type { CertificateFormProps } from "@/types/staff/certificate.types";
 import { useCertificateForm } from "@/hooks/use-certificate-form";
 
@@ -35,18 +27,20 @@ const CertificateForm = ({ isEdit, certificateId }: CertificateFormProps) => {
       <header className="rounded-2xl space-y-6 mb-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <Avatar className="h-12 w-12 bg-blue-600">
-              <AvatarFallback className="bg-transparent text-white">
-                <ShieldCheck className="h-6 w-6" />
-              </AvatarFallback>
-            </Avatar>
+            <div
+              className="p-2 bg-white hover:bg-blue-100 border border-blue-200 hover:border-blue-300 rounded-lg transition-colors cursor-pointer"
+              title="Back to Certificates"
+              onClick={handleGoBack}
+            >
+              <ArrowLeft className="h-4 w-4 text-blue-600" />
+            </div>
             <div className="flex-1">
               <h1 className="text-xl font-bold text-blue-900">
                 {isEdit ? "Edit Certificate" : "Create New Certificate"}
               </h1>
               <p className="mt-1 text-sm text-gray-600">
                 {isEdit
-                  ? "Update certificate information and verification template."
+                  ? "Update certificate information."
                   : "Add a new certificate type to the system."}
               </p>
             </div>
@@ -62,13 +56,6 @@ const CertificateForm = ({ isEdit, certificateId }: CertificateFormProps) => {
               <Info className="h-3 w-3 mr-1" />
               {isEdit ? "Edit Mode" : "Create Mode"}
             </Badge>
-            <div
-              className="p-2 bg-white hover:bg-blue-100 border border-blue-200 hover:border-blue-300 rounded-lg transition-colors cursor-pointer"
-              title="Back to Certificates"
-              onClick={handleGoBack}
-            >
-              <ArrowLeft className="h-4 w-4 text-blue-600" />
-            </div>
           </div>
         </div>
       </header>
@@ -151,58 +138,6 @@ const CertificateForm = ({ isEdit, certificateId }: CertificateFormProps) => {
                             <Textarea
                               placeholder="Describe the certificate type, its purpose, and requirements..."
                               className="min-h-24 w-full border-gray-200 focus:border-blue-300 focus:ring-blue-200"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Verification Template Section */}
-            <Card className="shadow-none border border-blue-100">
-              <CardContent>
-                <div className="space-y-6">
-                  <div className="flex items-start gap-3">
-                    <div className="p-1 bg-blue-100 rounded-lg mt-0.5">
-                      <FileText className="h-4 w-4 text-blue-600" />
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="font-medium text-blue-900 mb-2 text-base">
-                        AI Verification Template
-                      </h4>
-                      <p className="text-sm text-blue-800 leading-relaxed mb-4">
-                        Configure the AI prompt template used for certificate
-                        verification.
-                        {isEdit && (
-                          <span className="block mt-2 text-blue-700 font-medium">
-                            Note: The system-managed "REQUIRED DATA INPUT"
-                            section is preserved automatically. Markdown is
-                            preferred.
-                          </span>
-                        )}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="space-y-4">
-                    <FormField
-                      control={form.control}
-                      name="verificationTemplate"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-sm font-medium text-gray-700">
-                            Verification Template{" "}
-                            <span className="text-red-600">*</span>
-                          </FormLabel>
-                          <FormControl>
-                            <Textarea
-                              placeholder="Enter the AI prompt template for certificate verification..."
-                              className="min-h-64 w-full border-gray-200 focus:border-blue-300 focus:ring-blue-200 font-mono text-sm"
                               {...field}
                             />
                           </FormControl>

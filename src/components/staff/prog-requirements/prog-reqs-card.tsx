@@ -70,11 +70,6 @@ const ProgramRequirementCard = ({
         )}
 
         <CardInfoSection>
-          {/* <CardInfoItem
-            icon={Hash}
-            label="Requirement ID"
-            value={`${requirement.id.slice(0, 8)}...`}
-          /> */}
           <CardInfoItem
             icon={Clock}
             label="Due At"

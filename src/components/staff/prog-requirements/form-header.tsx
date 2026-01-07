@@ -1,6 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { ArrowLeft, FileText, Info } from "lucide-react";
+import { ArrowLeft, Info } from "lucide-react";
 import type { FormHeaderProps } from "@/types/staff/prog-req.types";
 
 export const FormHeader = ({ isEdit, onGoBack }: FormHeaderProps) => {
@@ -8,11 +7,13 @@ export const FormHeader = ({ isEdit, onGoBack }: FormHeaderProps) => {
     <header className="rounded-2xl space-y-6 mb-6">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <Avatar className="h-12 w-12 bg-blue-600">
-            <AvatarFallback className="bg-transparent text-white">
-              <FileText className="h-6 w-6" />
-            </AvatarFallback>
-          </Avatar>
+          <div
+            className="p-2 bg-white hover:bg-blue-100 border border-blue-200 hover:border-blue-300 rounded-lg transition-colors cursor-pointer"
+            title="Back to Requirements"
+            onClick={onGoBack}
+          >
+            <ArrowLeft className="h-4 w-4 text-blue-600" />
+          </div>
           <div className="flex-1">
             <h1 className="text-xl font-bold text-blue-900">
               {isEdit
@@ -37,13 +38,6 @@ export const FormHeader = ({ isEdit, onGoBack }: FormHeaderProps) => {
             <Info className="h-3 w-3 mr-1" />
             {isEdit ? "Edit Mode" : "Create Mode"}
           </Badge>
-          <div
-            className="p-2 bg-white hover:bg-blue-100 border border-blue-200 hover:border-blue-300 rounded-lg transition-colors cursor-pointer"
-            title="Back to Requirements"
-            onClick={onGoBack}
-          >
-            <ArrowLeft className="h-4 w-4 text-blue-600" />
-          </div>
         </div>
       </div>
     </header>

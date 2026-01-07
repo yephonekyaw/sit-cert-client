@@ -21,10 +21,6 @@ const mainRouter = [
         path: "/staff",
         children: staffRouter,
       },
-      // {
-      //   path: "/login",
-      //   element: <LoginPage />,
-      // },
     ],
   },
   {

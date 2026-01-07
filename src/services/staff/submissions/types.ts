@@ -31,7 +31,6 @@ export type StudentSubmissionItem = {
   fileSize?: number | null;
   mimeType?: string | null;
   submissionStatus?: string | null;
-  agentConfidenceScore?: number | null;
   submissionTiming?: string | null;
   submittedAt?: string | null; // ISO format
   expiredAt?: string | null; // ISO format
@@ -79,8 +78,6 @@ export type VerificationHistoryResponse = {
   oldStatus: SubmissionStatus;
   newStatus: SubmissionStatus;
   comments?: string | null;
-  reasons?: string | null;
-  agentAnalysisResult?: Record<string, unknown> | null;
   createdAt: string; // ISO datetime string
   updatedAt?: string | null; // ISO datetime string
 };

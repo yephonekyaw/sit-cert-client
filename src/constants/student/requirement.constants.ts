@@ -8,7 +8,7 @@ export const SUPPORTED_FILE_TYPES = [
   "image/webp",
 ];
 
-export const SUPPORTED_FILE_EXTENSIONS = ".pdf,.jpg,.jpeg,.png,.webp";
+export const SUPPORTED_FILE_EXTENSIONS = ".pdf";
 
 export const MAX_FILE_SIZE = 10 * 1024 * 1024;
 

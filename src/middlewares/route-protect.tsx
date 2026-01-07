@@ -85,14 +85,12 @@ const RouteProtect = ({ types, children }: RouteProtectProps) => {
 
   // Handle authentication errors
   if (isAxiosError(error) && error.status === 401) {
-    // return <Navigate to="/login" state={{ from: location }} replace />;
     window.location.href = import.meta.env.VITE_BASE_LOGIN_URL;
     return null;
   }
 
   // Redirect to login if not authenticated
   if (!isAuthenticated) {
-    // return <Navigate to="/login" state={{ from: location }} replace />;
     window.location.href = import.meta.env.VITE_BASE_LOGIN_URL;
     return null;
   }

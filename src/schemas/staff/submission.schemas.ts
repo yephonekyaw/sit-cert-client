@@ -19,9 +19,4 @@ export const ManualVerificationFormSchema = z.object({
     .max(1000, { message: "Comments must not exceed 1000 characters" })
     .optional()
     .or(z.literal("")),
-  reasons: z
-    .string()
-    .max(1000, { message: "Reasons must not exceed 1000 characters" })
-    .optional()
-    .or(z.literal("")),
 });

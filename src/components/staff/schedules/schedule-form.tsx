@@ -1,6 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
   Form,
   FormControl,
@@ -54,11 +53,13 @@ const ScheduleForm = ({ isEdit, scheduleId }: ScheduleFormProps) => {
       <header className="rounded-2xl space-y-6 mb-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <Avatar className="h-12 w-12 bg-blue-600">
-              <AvatarFallback className="bg-transparent text-white">
-                <CalendarIcon className="h-6 w-6" />
-              </AvatarFallback>
-            </Avatar>
+            <div
+              className="p-2 bg-white hover:bg-blue-100 border border-blue-200 hover:border-blue-300 rounded-lg transition-colors cursor-pointer"
+              title="Back to Schedules"
+              onClick={handleGoBack}
+            >
+              <ArrowLeft className="h-4 w-4 text-blue-600" />
+            </div>
             <div className="flex-1">
               <h1 className="text-xl font-bold text-blue-900">
                 {isEdit ? "Edit Schedule" : "Create New Schedule"}
@@ -81,13 +82,6 @@ const ScheduleForm = ({ isEdit, scheduleId }: ScheduleFormProps) => {
               <Info className="h-3 w-3 mr-1" />
               {isEdit ? "Edit Mode" : "Create Mode"}
             </Badge>
-            <div
-              className="p-2 bg-white hover:bg-blue-100 border border-blue-200 hover:border-blue-300 rounded-lg transition-colors cursor-pointer"
-              title="Back to Schedules"
-              onClick={handleGoBack}
-            >
-              <ArrowLeft className="h-4 w-4 text-blue-600" />
-            </div>
           </div>
         </div>
       </header>

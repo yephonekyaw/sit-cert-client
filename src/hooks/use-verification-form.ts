@@ -21,7 +21,6 @@ export const useVerificationForm = () => {
       scheduleId: "",
       status: undefined,
       comments: "",
-      reasons: "",
     },
   });
 
@@ -33,7 +32,6 @@ export const useVerificationForm = () => {
         scheduleId: submissionRelatedDetail?.scheduleId || "",
         status: undefined,
         comments: "",
-        reasons: "",
       });
     }
   }, [selectedSubmission, submissionRelatedDetail, form]);

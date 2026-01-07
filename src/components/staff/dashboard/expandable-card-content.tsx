@@ -30,10 +30,10 @@ export const ExpandableCardContent = ({
               <FileText className={`h-4 w-4 ${textColor}`} />
             </div>
             <div className="text-left">
-              <span className={`text-sm font-medium ${textColor}`}>
+              <span className={`text-base font-medium ${textColor}`}>
                 {title}
               </span>
-              <p className="text-xs text-slate-600 mt-0.5">{subtitle}</p>
+              <p className="text-sm text-slate-600 mt-0.5">{subtitle}</p>
             </div>
           </div>
         </AccordionTrigger>
@@ -54,17 +54,17 @@ export const ExpandableCardContent = ({
                       </h2>
                     ),
                     p: ({ children }) => (
-                      <p className="text-sm text-slate-600 mb-3 leading-relaxed">
+                      <p className="text-base text-slate-600 mb-3 leading-relaxed">
                         {children}
                       </p>
                     ),
                     ul: ({ children }) => (
-                      <ul className="list-disc list-inside mb-3 space-y-1 text-sm text-slate-600">
+                      <ul className="list-disc list-inside mb-3 space-y-1 text-base text-slate-600">
                         {children}
                       </ul>
                     ),
                     code: ({ children }) => (
-                      <code className="bg-blue-50 px-1.5 py-0.5 rounded text-xs text-blue-800">
+                      <code className="bg-blue-50 px-1.5 py-0.5 rounded text-base text-blue-800">
                         {children}
                       </code>
                     ),

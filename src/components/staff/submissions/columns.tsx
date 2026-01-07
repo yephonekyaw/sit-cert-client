@@ -1,6 +1,5 @@
 import type { ColumnDef } from "@tanstack/react-table";
 import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
 import {
   IdCard,
   User,
@@ -13,11 +12,9 @@ import {
 import { cn } from "@/lib/utils";
 import { SearchFilterColumn } from "@/components/ui/data-table/search-filter-column";
 import { FacetedFilterColumn } from "@/components/ui/data-table/faceted-filter-column";
-import { SortFilterColumn } from "@/components/ui/data-table/sort-filter-column";
 import type { StudentSubmissionItem } from "@/services/staff/submissions/types";
 import { formatDate } from "@/utils/common.utils";
 import {
-  getConfidenceColor,
   getSubmissionStatusBadge,
   getSubmissionTimingBadge,
 } from "@/utils/staff/submission.utils";
@@ -171,32 +168,6 @@ export const columns: ColumnDef<StudentSubmissionItem>[] = [
       const status = row.getValue(id);
       if (!status && value.includes("not_submitted")) return true;
       return Array.isArray(value) && value.includes(status);
-    },
-  },
-  {
-    accessorKey: "agentConfidenceScore",
-    header: ({ column }) => (
-      <SortFilterColumn column={column} title="AI Confidence" />
-    ),
-    cell: ({ row }) => {
-      const confidenceScore = row.original.agentConfidenceScore ?? 0;
-      const percentage = Math.round(confidenceScore * 100);
-
-      return (
-        <div className="flex items-center min-w-[120px]">
-          <Progress value={percentage} className="h-1.5 bg-gray-200 flex-1" />
-          <span
-            className={cn(
-              "text-xs font-medium min-w-[35px] text-right",
-              confidenceScore > 0
-                ? getConfidenceColor(confidenceScore)
-                : "text-gray-400"
-            )}
-          >
-            {percentage}%
-          </span>
-        </div>
-      );
     },
   },
   {
