@@ -24,6 +24,8 @@ export const AdvancedSettingsSection = ({
   yearOptions,
   currentYear,
 }: AdvancedSettingsSectionProps) => {
+  const recurrence = form.watch("recurrenceType");
+
   return (
     <Card className="shadow-none border border-blue-100">
       <CardContent>
@@ -162,109 +164,111 @@ export const AdvancedSettingsSection = ({
             />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
-            <FormField
-              control={form.control}
-              name="effectiveFromYear"
-              render={({ field }) => {
-                const value = field.value ?? currentYear;
-                return (
-                  <FormItem>
-                    <FormLabel
-                      htmlFor="effectiveFromYear"
-                      className="text-sm font-medium text-gray-700"
-                    >
-                      Effective From Year
-                    </FormLabel>
-                    <FormControl>
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <Button
-                            variant="outline"
-                            className="w-full justify-between border-gray-200 focus:border-blue-300 focus:ring-blue-200"
-                          >
-                            {value}
-                            <ChevronDown className="h-4 w-4 opacity-50" />
-                          </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent
-                          align="start"
-                          sideOffset={4}
-                          className="p-0"
-                          style={{
-                            width: "var(--radix-dropdown-menu-trigger-width)",
-                            minWidth:
-                              "var(--radix-dropdown-menu-trigger-width)",
-                          }}
-                        >
-                          {yearOptions.map((year) => (
-                            <DropdownMenuItem
-                              key={year}
-                              onClick={() => field.onChange(year)}
+          {recurrence === ProgReqRecurrenceType.ANNUAL && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
+              <FormField
+                control={form.control}
+                name="effectiveFromYear"
+                render={({ field }) => {
+                  const value = field.value ?? currentYear;
+                  return (
+                    <FormItem>
+                      <FormLabel
+                        htmlFor="effectiveFromYear"
+                        className="text-sm font-medium text-gray-700"
+                      >
+                        Effective From Year
+                      </FormLabel>
+                      <FormControl>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button
+                              variant="outline"
+                              className="w-full justify-between border-gray-200 focus:border-blue-300 focus:ring-blue-200"
                             >
-                              {year}
-                            </DropdownMenuItem>
-                          ))}
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                );
-              }}
-            />
+                              {value}
+                              <ChevronDown className="h-4 w-4 opacity-50" />
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent
+                            align="start"
+                            sideOffset={4}
+                            className="p-0"
+                            style={{
+                              width: "var(--radix-dropdown-menu-trigger-width)",
+                              minWidth:
+                                "var(--radix-dropdown-menu-trigger-width)",
+                            }}
+                          >
+                            {yearOptions.map((year) => (
+                              <DropdownMenuItem
+                                key={year}
+                                onClick={() => field.onChange(year)}
+                              >
+                                {year}
+                              </DropdownMenuItem>
+                            ))}
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  );
+                }}
+              />
 
-            <FormField
-              control={form.control}
-              name="effectiveUntilYear"
-              render={({ field }) => {
-                const value = field.value ?? currentYear + 1;
-                return (
-                  <FormItem>
-                    <FormLabel
-                      htmlFor="effectiveUntilYear"
-                      className="text-sm font-medium text-gray-700"
-                    >
-                      Effective Until Year
-                    </FormLabel>
-                    <FormControl>
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <Button
-                            variant="outline"
-                            className="w-full justify-between border-gray-200 focus:border-blue-300 focus:ring-blue-200"
-                          >
-                            {value}
-                            <ChevronDown className="h-4 w-4 opacity-50" />
-                          </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent
-                          align="start"
-                          sideOffset={4}
-                          className="p-0"
-                          style={{
-                            width: "var(--radix-dropdown-menu-trigger-width)",
-                            minWidth:
-                              "var(--radix-dropdown-menu-trigger-width)",
-                          }}
-                        >
-                          {yearOptions.map((year) => (
-                            <DropdownMenuItem
-                              key={year}
-                              onClick={() => field.onChange(year)}
+              <FormField
+                control={form.control}
+                name="effectiveUntilYear"
+                render={({ field }) => {
+                  const value = field.value ?? currentYear + 1;
+                  return (
+                    <FormItem>
+                      <FormLabel
+                        htmlFor="effectiveUntilYear"
+                        className="text-sm font-medium text-gray-700"
+                      >
+                        Effective Until Year
+                      </FormLabel>
+                      <FormControl>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button
+                              variant="outline"
+                              className="w-full justify-between border-gray-200 focus:border-blue-300 focus:ring-blue-200"
                             >
-                              {year}
-                            </DropdownMenuItem>
-                          ))}
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                );
-              }}
-            />
-          </div>
+                              {value}
+                              <ChevronDown className="h-4 w-4 opacity-50" />
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent
+                            align="start"
+                            sideOffset={4}
+                            className="p-0"
+                            style={{
+                              width: "var(--radix-dropdown-menu-trigger-width)",
+                              minWidth:
+                                "var(--radix-dropdown-menu-trigger-width)",
+                            }}
+                          >
+                            {yearOptions.map((year) => (
+                              <DropdownMenuItem
+                                key={year}
+                                onClick={() => field.onChange(year)}
+                              >
+                                {year}
+                              </DropdownMenuItem>
+                            ))}
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  );
+                }}
+              />
+            </div>
+          )}
 
           <FormField
             control={form.control}
