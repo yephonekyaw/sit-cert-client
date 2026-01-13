@@ -1,65 +1,52 @@
-import { useState } from "react";
-import { UserLock, UserPlus } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
-import StaffList from "@/components/staff/staff-management/staff-list";
-import { mockStaffMembers } from "@/mock/staff.mock";
-import type { StaffMemberDetails } from "@/types/staff/staff.types";
+import UpdateMemberModal from "@/components/staff/staff-management/update-member-modal";
+import AddMemeberModal from "@/components/staff/staff-management/add-member-modal";
+import { columns } from "@/components/staff/staff-management/columns";
+import PageHeader from "@/components/staff/staff-management/page-header";
+import DataTable from "@/components/ui/data-table/data-table";
+import DefaultLoader from "@/components/ui/default-loader";
+import { useGetStaffMembers } from "@/services/staff/members/queries";
+import { isAxiosError } from "axios";
+import { Users } from "lucide-react";
+import { useEffect } from "react";
+import { toast } from "sonner";
 
 const StaffPage = () => {
-  const navigate = useNavigate();
-  const [staffMembers] = useState<StaffMemberDetails[]>(mockStaffMembers);
+  const { data: staffMembers, isLoading, error } = useGetStaffMembers();
 
-  const handleEdit = (staff: StaffMemberDetails) => {
-    console.log("Edit staff:", staff);
-    // TODO: Implement staff edit functionality
-    // navigate(`/staff/staff-management/edit/${staff.id}`);
-  };
+  useEffect(() => {
+    if (error && isAxiosError(error)) {
+      toast.error("Failed to load staff members.");
+    }
+  }, [error]);
 
-  const handleAddStaff = () => {
-    navigate("/staff/staff-management/new");
-  };
+  if (isLoading) {
+    return <DefaultLoader label="Loading staff members..." />;
+  }
 
-  const activeStaffCount = staffMembers.filter((s) => s.user.is_active).length;
+  if (error) {
+    return (
+      <div className="w-full text-center py-12">
+        <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <Users className="h-8 w-8 text-red-400" />
+        </div>
+        <h3 className="text-lg font-medium text-gray-900 mb-2">
+          Failed to load staff members
+        </h3>
+        <p className="text-gray-600">
+          There was an error loading staff members list. Please refresh the page
+          to try again.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full space-y-6">
       {/* Page Header */}
-      <header className="bg-blue-50 border border-blue-100 rounded-2xl p-6">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center flex-shrink-0">
-              <UserLock className="h-6 w-6 text-blue-600" />
-            </div>
-            <div>
-              <h1 className="text-xl font-bold text-blue-900">
-                Staff Management
-              </h1>
-              <p className="mt-1 text-sm text-gray-600">
-                Manage staff members and their program access permissions.
-              </p>
-            </div>
-          </div>
-          <div className="flex items-center gap-4">
-            <div className="text-right">
-              <div className="text-2xl font-bold text-blue-900">
-                {activeStaffCount}
-              </div>
-              <div className="text-xs text-gray-600">Active Staff</div>
-            </div>
-            <Button
-              onClick={handleAddStaff}
-              className="bg-blue-600 hover:bg-blue-700"
-            >
-              <UserPlus className="h-4 w-4 mr-2" />
-              Add Staff
-            </Button>
-          </div>
-        </div>
-      </header>
-
-      {/* Staff List */}
-      <StaffList staff={staffMembers} onEdit={handleEdit} />
+      <PageHeader />
+      <DataTable columns={columns} data={staffMembers?.data?.members || []} />
+      <AddMemeberModal />
+      <UpdateMemberModal />
     </div>
   );
 };

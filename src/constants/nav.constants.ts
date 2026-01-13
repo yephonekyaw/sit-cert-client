@@ -1,11 +1,5 @@
 import type { NavigationItem } from "@/types/nav.types";
-import {
-  BarChart3,
-  // Upload,
-  CheckCircle,
-  // UserLock,
-  // SquareDashedKanban,
-} from "lucide-react";
+import { BarChart3, CheckCircle, UserLock } from "lucide-react";
 
 export const NAVIGATION_CONFIG: {
   student: NavigationItem[];
@@ -29,32 +23,10 @@ export const NAVIGATION_CONFIG: {
       href: "/staff/submissions",
       icon: CheckCircle,
     },
-    // {
-    //   label: "Staff Management",
-    //   href: "/staff/staff-management",
-    //   icon: UserLock,
-    // },
-    // {
-    //   label: "Student Management",
-    //   href: "/staff/student-management",
-    //   icon: SquareDashedKanban,
-    //   children: [
-    //     {
-    //       label: "Dashboard",
-    //       href: "/staff/student-management/dashboard",
-    //       icon: BarChart3,
-    //     },
-    //     {
-    //       label: "Data Import",
-    //       href: "/staff/student-management/data-import",
-    //       icon: Upload,
-    //     },
-    //     {
-    //       label: "Submissions",
-    //       href: "/staff/student-management/submissions",
-    //       icon: CheckCircle,
-    //     },
-    //   ],
-    // },
+    {
+      label: "Staff Management",
+      href: "/staff/members",
+      icon: UserLock,
+    },
   ],
 };

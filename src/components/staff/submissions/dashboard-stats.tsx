@@ -7,8 +7,8 @@ import {
   Users,
   CheckCircle,
   Clock,
-  AlertCircle,
   BarChart3,
+  ChartColumnStacked,
 } from "lucide-react";
 
 const DashboardStats = () => {
@@ -28,10 +28,12 @@ const DashboardStats = () => {
   if (error || !dashboardStats?.data) {
     return (
       <Card className="w-full">
-        <CardContent className="flex items-center justify-center py-8">
-          <div className="text-center text-muted-foreground">
-            <AlertCircle className="h-8 w-8 mx-auto mb-2" />
-            <p>Unable to load stats</p>
+        <CardContent className="flex items-center justify-center py-4 text-gray-500">
+          <div className="flex flex-col items-center justify-center space-y-2">
+            <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">
+              <ChartColumnStacked className="h-6 w-6 text-gray-400" />
+            </div>
+            <p className="font-medium">No stats data available</p>
           </div>
         </CardContent>
       </Card>

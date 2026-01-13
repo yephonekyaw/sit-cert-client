@@ -10,8 +10,8 @@ export const useGetUnreadNotifications = (
     queryKey: ["notifications", "unread", limit, offset],
     queryFn: () => getUnreadNotifications(limit, offset),
     enabled,
-    staleTime: 30 * 1000, // 30 seconds
-    refetchInterval: 30 * 1000, // 30 seconds
+    staleTime: 60 * 1000, // 60 seconds
+    refetchInterval: 60 * 1000, // 60 seconds
     refetchIntervalInBackground: true,
     refetchOnWindowFocus: true,
   });
@@ -21,8 +21,8 @@ export const useGetUnreadCount = (enabled: boolean = true) =>
     queryKey: ["notifications", "unread", "count"],
     queryFn: getUnreadCount,
     enabled,
-    staleTime: 30 * 1000, // 30 seconds
-    refetchInterval: 30 * 1000, // 30 seconds
+    staleTime: 60 * 1000, // 60 seconds
+    refetchInterval: 60 * 1000, // 60 seconds
     refetchIntervalInBackground: true,
     refetchOnWindowFocus: true,
   });

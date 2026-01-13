@@ -12,6 +12,7 @@ import RouteProtect from "@/middlewares/route-protect";
 import CertificateFormPage from "@/pages/staff/cert-form-page";
 import VerificationFormPage from "@/pages/staff/verification-form-page";
 import StaffRedirectPage from "@/pages/staff/staff-redirect-page";
+import StaffPage from "@/pages/staff/staff-page";
 
 const staffRouter = [
   {
@@ -22,17 +23,13 @@ const staffRouter = [
       </RouteProtect>
     ),
     children: [
-      // {
-      //   path: "staff-management",
-      //   element: <StaffPage />,
-      // },
-      // {
-      //   path: "staff-management/new",
-      //   element: <StaffFormPage />,
-      // },
       {
         index: true,
         element: <StaffRedirectPage />,
+      },
+      {
+        path: "members",
+        element: <StaffPage />,
       },
       {
         path: "programs/new",
