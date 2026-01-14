@@ -2,9 +2,11 @@ import ScheduleCard from "@/components/staff/schedules/schedule-card";
 import { useGetSchedules } from "@/services/staff/schedules/queries";
 import { Calendar } from "lucide-react";
 import DefaultLoader from "@/components/ui/default-loader";
+import { useScheduleStore } from "@/stores/staff/schedule.stores";
 
 const SchedulesPage = () => {
   const { data: schedules, isLoading, error } = useGetSchedules();
+  const { selectedYearFilter } = useScheduleStore();
 
   if (isLoading) {
     return <DefaultLoader label="Loading schedules..." />;
@@ -20,8 +22,8 @@ const SchedulesPage = () => {
           Failed to load schedules
         </h3>
         <p className="text-gray-600">
-          There was an error loading the program requirement schedules. Please refresh the
-          page to try again.
+          There was an error loading the program requirement schedules. Please
+          refresh the page to try again.
         </p>
       </div>
     );
@@ -30,9 +32,15 @@ const SchedulesPage = () => {
   return (
     <div className="space-y-4">
       {schedules?.data?.length ? (
-        schedules.data.map((schedule) => (
-          <ScheduleCard key={schedule.id} schedule={schedule} />
-        ))
+        schedules.data
+          .filter(
+            (schedule) =>
+              selectedYearFilter === "all" ||
+              schedule.academicYear.toString() === selectedYearFilter
+          )
+          .map((schedule) => (
+            <ScheduleCard key={schedule.id} schedule={schedule} />
+          ))
       ) : (
         <div className="w-full text-center py-12">
           <p className="text-gray-600">No schedules found.</p>

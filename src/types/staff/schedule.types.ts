@@ -21,15 +21,8 @@ interface ScheduleStoreState {
   clearSelectedSchedule: () => void;
   clearScheduleStore: () => void;
 
-  // Modal states if needed in the future
-  // createModalState: boolean;
-  // setCreateModalState: (state: boolean) => void;
-
-  // editModalState: boolean;
-  // setEditModalState: (state: boolean) => void;
-
-  // editScheduleId: string | null;
-  // setEditScheduleId: (id: string | null) => void;
+  selectedYearFilter: string;
+  setSelectedYearFilter: (year: string) => void;
 }
 
 interface ScheduleFormProps {

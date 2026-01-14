@@ -6,4 +6,7 @@ export const useScheduleStore = create<ScheduleStoreState>((set) => ({
   setSelectedSchedule: (schedule) => set({ selectedSchedule: schedule }),
   clearSelectedSchedule: () => set({ selectedSchedule: null }),
   clearScheduleStore: () => set({ selectedSchedule: null }),
+
+  selectedYearFilter: "all",
+  setSelectedYearFilter: (year) => set({ selectedYearFilter: year }),
 }));
