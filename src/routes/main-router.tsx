@@ -3,6 +3,7 @@ import studentRouter from "./student-router";
 import staffRouter from "./staff-router";
 import NotFoundPage from "@/pages/not-found-page";
 import GlobalRedirect from "@/pages/global-redirect";
+import RouteProtect from "@/middlewares/route-protect";
 
 const mainRouter = [
   {
@@ -11,7 +12,11 @@ const mainRouter = [
     children: [
       {
         index: true,
-        element: <GlobalRedirect />, // put this element in the route-protect component to prevent logged-out users
+        element: (
+          <RouteProtect types={["staff", "student"]}>
+            <GlobalRedirect />
+          </RouteProtect>
+        ),
       },
       {
         path: "/student",
