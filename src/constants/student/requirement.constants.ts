@@ -12,18 +12,6 @@ export const SUPPORTED_FILE_EXTENSIONS = ".pdf";
 
 export const MAX_FILE_SIZE = 10 * 1024 * 1024;
 
-export const SUBMISSION_FILTER_OPTIONS = [
-  { value: "all", label: "All Requirements" },
-  { value: "approved", label: "Approved" },
-  { value: "pending", label: "Bot Reviewing" },
-  { value: "rejected", label: "Rejected" },
-  { value: "manual_review", label: "Staff Reviewing" },
-  { value: "overdue", label: "Overdue" },
-  { value: "late", label: "Late" },
-  { value: "on_time", label: "On Time" },
-  { value: "not_submitted", label: "Not Submitted" },
-] as const;
-
 export const UPLOAD_GUIDELINES = [
   "Ensure the certificate is clearly visible and readable",
   "File should be in PDF format or high-quality image (JPG, PNG, WebP)",
@@ -43,7 +31,7 @@ export const REQUIREMENT_STATUS_BADGES = {
     className: "bg-red-100 text-red-700 border-red-200",
   },
   manual_review: {
-    label: "Under Review",
+    label: "Manual Review",
     className: "bg-purple-100 text-purple-700 border-purple-200",
   },
   pending: {
@@ -97,7 +85,6 @@ export default {
   SUPPORTED_FILE_TYPES,
   SUPPORTED_FILE_EXTENSIONS,
   MAX_FILE_SIZE,
-  SUBMISSION_FILTER_OPTIONS,
   UPLOAD_GUIDELINES,
   REQUIREMENT_STATUS_BADGES,
   DEFAULT_TEXT_TRUNCATE_LENGTH,

@@ -61,7 +61,7 @@ export const getRequirementStatusBadge = (
         };
       case "manual_review":
         return {
-          label: "Under Review",
+          label: "Manual Review",
           icon: Eye,
           className: "bg-purple-100 text-purple-700 border-purple-200",
         };
