@@ -94,21 +94,19 @@ export function NotificationItem({
             <ReactMarkdown
               components={{
                 p: ({ children }) => (
-                  <span className="block text-xs text-gray-800 leading-relaxed">
+                  <pre className="block text-xs text-gray-800 leading-relaxed">
                     {children}
-                  </span>
+                  </pre>
                 ),
 
                 code: ({ children }) => (
-                  <span className="font-medium italic text-gray-800">
+                  <pre className="font-medium italic text-gray-800">
                     {children}
-                  </span>
+                  </pre>
                 ),
 
                 strong: ({ children }) => (
-                  <span className="font-semibold text-gray-900">
-                    {children}
-                  </span>
+                  <pre className="font-semibold text-gray-900">{children}</pre>
                 ),
               }}
             >

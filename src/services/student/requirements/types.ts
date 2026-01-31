@@ -55,10 +55,8 @@ interface VerificationHistoryResponse {
   id: string;
   /** Type of verification */
   verificationType: VerificationType;
-  /** Previous submission status */
-  oldStatus: SubmissionStatus;
-  /** New submission status */
-  newStatus: SubmissionStatus;
+  /** Current submission status */
+  status: SubmissionStatus;
   /** Verification comments */
   comments?: string;
   /** Creation timestamp */

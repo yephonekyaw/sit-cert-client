@@ -75,8 +75,7 @@ export type GetListOfSubmissions = {
 export type VerificationHistoryResponse = {
   id: string;
   verificationType: VerificationType;
-  oldStatus: SubmissionStatus;
-  newStatus: SubmissionStatus;
+  status: SubmissionStatus;
   comments?: string | null;
   createdAt: string; // ISO datetime string
   updatedAt?: string | null; // ISO datetime string

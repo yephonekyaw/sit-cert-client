@@ -2,7 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { SUBMISSION_STATUS_CONFIGS } from "@/constants/student/requirement.constants";
 import { formatDate } from "@/utils/common.utils";
-import { ArrowRight, Bot, MessageSquare, User } from "lucide-react";
+import { Bot, MessageSquare, User } from "lucide-react";
 import { useGetVerificationHistory } from "@/services/student/requirements/queries";
 import DefaultLoader from "@/components/ui/default-loader";
 import type { VerificationHistoryResponse } from "@/services/student/requirements/types";
@@ -15,18 +15,14 @@ const HistoryItem = ({
   history: VerificationHistoryResponse;
   isLast: boolean;
 }) => {
-  const oldStatusConfig =
+  const statusConfig =
     SUBMISSION_STATUS_CONFIGS[
-      history.oldStatus.toLowerCase() as keyof typeof SUBMISSION_STATUS_CONFIGS
-    ];
-  const newStatusConfig =
-    SUBMISSION_STATUS_CONFIGS[
-      history.newStatus.toLowerCase() as keyof typeof SUBMISSION_STATUS_CONFIGS
+      history.status.toLowerCase() as keyof typeof SUBMISSION_STATUS_CONFIGS
     ];
   const isAgent = history.verificationType === "agent";
 
   // Return null if status configs are not found
-  if (!oldStatusConfig || !newStatusConfig) {
+  if (!statusConfig) {
     return null;
   }
 
@@ -68,22 +64,13 @@ const HistoryItem = ({
             )}
 
             <div className="flex items-center space-x-3 text-sm">
-              <Badge className={`${oldStatusConfig.color}`}>
-                {oldStatusConfig.icon && (
-                  <oldStatusConfig.icon
-                    className={`h-3 w-3 mr-1 ${oldStatusConfig.iconColor}`}
+              <Badge className={`${statusConfig.color}`}>
+                {statusConfig.icon && (
+                  <statusConfig.icon
+                    className={`h-3 w-3 mr-1 ${statusConfig.iconColor}`}
                   />
                 )}
-                {oldStatusConfig.label}
-              </Badge>
-              <ArrowRight className="h-4 w-4 text-slate-400" />
-              <Badge className={`${newStatusConfig.color}`}>
-                {newStatusConfig.icon && (
-                  <newStatusConfig.icon
-                    className={`h-3 w-3 mr-1 ${newStatusConfig.iconColor}`}
-                  />
-                )}
-                {newStatusConfig.label}
+                {statusConfig.label}
               </Badge>
             </div>
           </div>
